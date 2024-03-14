@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+<link href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="js/main.js"></script>
+<script src="js/index.js"></script>
+<script>
+    window.onload = function(){
+        soBaiDangHomNay();
+        demSoLuongBaiDang();
+        demSoLuongBaiViet();
+        demSoLuongTk();
+        soLuongBdsCacTinh();
+    }
+</script>
+</head>
+<body class="sb-nav-fixed">
+    <nav id="top" class="sb-topnav navbar navbar-expand navbar-dark bg-dark"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav"></div>
+        <div id="layoutSidenav_content">
+            <main class="main">
+                <div class="main-component">
+                    <div class="col-md-9 animated bounce">
+                        <div class="d-flex align-items-center mb-4 pb-4 border-bottom">
+                            <div class="ms-3">
+                                <img alt="" src="../image/lich.png">
+                                <h2 class=" text-uppercase fw-weight-bold mb-0">
+                                <script language="javascript">
+                                    document.write(day_name);
+                                </script>
+                                </h2>
+                                <p class="text-gray fst-italic mb-0">
+                                <div id="digital-clock"></div>
+                                </p>
+                            </div>
+                        </div>
+            
+                        <h2 class="page-header" style="margin-top: 20px;">Thông báo</h2>
+                        <p style="font-size: 26px">Bạn có:
+                        <p>
+                        <ul class="list-group">
+                            <li onclick="loadAllContact()" class="list-group-item d-flex justify-content-between align-items-center" id="lienHeMoi"><img
+                                    alt="" src="../image/lienhe.png" style="margin-right: 10px;"> <a href="tindang.html"
+                                    style="font-size: 20px; font-family: 'auto'; color: #286090"> <b>
+                                        Tin đăng hôm nay</b></a> <span
+                                    style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; background-color: #740025;margin-top: 3.5px;padding-top: 5px;"
+                                    class="badge bg-primary rounded-pill">
+                                    <span id="demchuaxem">0</span></li>
+                        </ul>
+                        <div class="thongke">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="thongke1">
+                                        <div class="texts">Số lượng tin đăng</div>
+                                        <div>
+                                        </div>
+                                        <div class="soluong">
+                                            <b id="soluongbaidang"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thongke2">
+                                        <div class="texts">Số lượng bài viết</div>
+                                        <div>
+                                        </div>
+                                        <div class="soluong">
+                                            <b id="soLuongbv"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thongke3">
+                                        <div class="texts">Số lượng tài khoản</div>
+                                        <div>
+                                        </div>
+                                        <div class="soluong">
+                                            <b id="soLuongTk"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br><br><hr><h5>Số lượng tin bất động sản các tỉnh</h5>
+                        <table id="example" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tên tỉnh</th>
+                                    <th>Số lượng bất động sản</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listbdscactinh">
+                                <tr>
+                                    <td>Hà nội</td>
+                                    <td>2 tin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+<script>
+    $('#example').DataTable();
+</script>
+</html>

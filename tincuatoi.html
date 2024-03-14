@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bất động sản</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/logo.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+    <script src="js/realestate.js"></script>
+    <script>
+        window.onload = function(){
+            loadMenu();
+            loadNavbar();
+            bdsCuaToi();
+        }
+    </script>
+</head>
+<body>
+    <div class="header" id="header"></div>
+
+
+    <div class="contentmain contentbaiviet">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 navbarleft">
+                    <div class="d-flex flex-column px-3 pt-2 text-white" id="navbartaikhoan">
+                    </div>
+                </div>
+                <div class="col py-3">
+                    <div class="contentright" >
+                        <h3>Quản lý tin đăng</h3>
+                        <div class="ghichuql">
+                            <p>Nếu tin của bạn đăng bị khóa không chính xác, hãy liên hệ với chúng tôi để khắc phục sự cố</p>
+                            <a href="lienhe.html">Liên hệ</a>
+                        </div>
+                        <div class="headcontent row">
+                            <div class="col-sm-2">
+                                <label class="lbform">&ThickSpace;</label><br>
+                                <a href="dangtin.html" class="btn btn-primary form-control">Đăng tin</a>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="lbform">chọn trạng thái</label>
+                                <select id="trangthailist" class="form-control">
+                                    <option value="">Tất cả</option>
+                                    <option value="DANG_HIEN_THI">Đang hiển thị</option>
+                                    <option value="DANG_CHO_DUYET">Đang chờ duyệt</option>
+                                    <option value="VI_PHAM">Vi phạm</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="lbform">&ThinSpace;</label><br>
+                                <button onclick="bdsCuaToi()" class="btn btn-primary"><i class="fa fa-filter"></i> Lọc</button>
+                            </div>
+                        </div>
+                        <table id="example" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mã tin</th>
+                                    <th>Ảnh</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Giá</th>
+                                    <th>Ngày đăng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Sửa</th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listbds">
+                                <!-- <tr>
+                                    <td>#2342</td>
+                                    <td><img src="image/bds1.jpg" class="anhphongqltin"></td>
+                                    <td>Chuyên cho thuê The Estella 2PN giá 17tr; 3PN giá 23tr; penthouse; duplex; sân vườn 160m2 giá 32tr</td>
+                                    <td>2.4 tỷ</td>
+                                    <td>2023-12-02</td>
+                                    <td>Đang hiển thị</td>
+                                    <td><a class="btn btn-primary"><i class="fa fa-edit"></i> Sửa</a></td>
+                                    <td><a class="btn btn-danger"><i class="fa fa-trash"></i> Xóa</a></td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        </div>
+
+    <footer id="footer" class="text-center text-lg-start bg-body-tertiary text-muted"></footer>
+</body>
+<script>
+    $('#example').DataTable();
+</script>
+</html>

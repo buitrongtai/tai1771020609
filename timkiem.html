@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bất động sản</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/logo.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    
+    <script src="js/main.js"></script>
+    <script src="js/realestate.js"></script>
+    <script src="js/category.js"></script>
+    <script src="js/address.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/realestate.js"></script>
+    <script src="js/favorite.js"></script>
+    <script>
+        window.onload = function(){
+            loadMenu();
+            loadGiaTienBenPhai();
+        }
+    </script>
+</head>
+<body>
+    <div class="header" id="header"></div>
+
+
+    <div class="contentmain contentmain-timkiem">
+        <div class="container">
+            <form action="timkiem.html" class="searchmain col-sm-12">
+                <div class="searchmain-top">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-map-marker iconsearchs"></i>
+                        </div>
+                        <div class="col-3">
+                            <div class="formsearchborder">
+                                <select name="tinh" id="tinh" class="formsearch" onchange="loadHuyenSearch()">
+                                    <option value="">Hà nội</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="formsearchborder">
+                                <select name="huyen" id="huyen" class="formsearch">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="formlienhe">
+                                <input name="search" type="text" class="formsearch" placeholder="Nhập từ khóa: dự án">
+                                <button class="sendem btnsearchtop">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="searchmain-bottom">
+                    <div class="row">
+                        <div class="col-2">
+                            <select name="mucgia" id="mucgiasearch" class="selectsearch">
+                                <option value="">Mức giá</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <select name="dientich" id="dientichsearch" class="selectsearch">
+                                <option value="">Diện tích</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <select name="sophongngu" id="sophongngusearch" class="selectsearch">
+                                <option value="">Số phòng ngủ</option>
+                            </select>
+                        </div>
+                        <div class="col-6"> 
+                            <select name="danhmuc" id="danhmucindex" class="form-control selectsearchmultiple" data-style="btn-default" multiple>
+                                <option value="s">Loại nhà đất</option>
+                                <option value="f">Loại nhà đất1</option>
+                                <option value="g">Loại nhà đất2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="divbdstimkiem">
+            <div class="container">
+                <hr>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="filterdstimkiem">
+                            <span class="soluongbdssp">
+                                <h3>Kết quả tìm kiếm</h3>
+                            </span>
+                            <div class="divsortgia">
+                                <select onchange="filterBds()" class="form-control" id="sortby">
+                                    <option value="id,desc">Tin mới nhất</option>
+                                    <option value="id,asc">Tin cũ nhất</option>
+                                    <option value="price,asc">Giá thấp đến cao</option>
+                                    <option value="price,desc">Giá cao đến thấp</option>
+                                </select>
+                            </div>
+                            <div class="divdaxacnhan" onclick="document.getElementById('checkxacthuc').click()">
+                                <span class="spxacnhan">
+                                    <span class="tieudext">Tin xác thực</span>
+                                    <label class="switch">
+                                        <input onchange="filterBds()" type="checkbox" id="checkxacthuc">
+                                        <span class="slider round"></span>
+                                    </label> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="listbdstimkiem" id="listbdstimkiem">
+                            <div class="singledbstimkiem">
+                                <a href="chitiet.html"><div class="row">
+                                    <div class="col-sm-8 nopaddingright">
+                                        <img src="image/bds4.jpg" class="bdsimagelarge">
+                                    </div>
+                                    <div class="col-sm-4 nopaddingleft">
+                                        <div class="row">
+                                            <div class="col-sm-12 nopaddingbottom">
+                                                <img src="image/bds5.jpg" class="bdsimgsmall smallfirst">
+                                            </div>  
+                                            <div class="col-sm-6 nopaddingright">
+                                                <img src="image/bds6.jpg" class="bdsimgsmall smallsv">
+                                            </div>
+                                            <div class="col-sm-6 nopaddingleft divslanh">
+                                                <img src="image/bds7.jpg" class="bdsimgsmall smallsv">
+                                                <div class="soluonganh">
+                                                    <i class="fa fa-picture-o"></i> 24
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></a>
+                                <div class="contentbdstk">
+                                    <a href="chitiet.html" class="tieudetk">SUẤT MUA TRỰC TIẾP TỪ CHỦ ĐẦU TƯ CĂN HỘ HOMYLAND RIVERSIDE Q2 GIÁ CHỈ 38 TRIỆU/M2, NHẬN NHÀ Ở NGAY</a>
+                                    <div class="divprice divtienich">
+                                        <span class="pricebds">5,1 tỷ</span>
+                                        <span class="pricebds areabds">30 m<sup>2</sup> </span>
+                                        <span class="tienichtk">38 tr/m<sup>2</sup> </span>
+                                        <span class="tienichtk">2 <i class="fa fa-bed"></i></span>
+                                        <span class="tienichtk">2 <i class="fa fa-bathtub"></i></span>
+                                        <span class="tienichtk">Quận 2, Tp.HCM</span>
+                                        <span class="tienichtk ngaydangtk">2023-01-10</span>
+                                    </div>
+                                    <span class="motatkbds">Chỉ cần thanh toán 30% nhận nhà ở ngay, sau đó trả chậm 24 tháng. Căn hộ Quận 2 Homyland Riverside.Giá bán: 38tr/m². Xem nhà liên hệ em: 0888888888 Giám đốc dự án Homyland Riverside).Nhà</span>
+                                </div>
+                                <hr>
+                                <div class="divtimebds">
+                                    <img src="image/user.jpg" class="usertkiem">
+                                    <span class="tenusertk">Phòng kinh doanh</span>
+                                    <button class="btnphonetk">0</button>
+                                    <button class="btnyeuthich iconyttk"><i class="fa fa-heart active"></i></button>
+                                </div>
+                            </div>
+                            <div class="singledbstimkiem">
+                                <a href="chitiet.html"><div class="row">
+                                    <div class="col-sm-8 nopaddingright">
+                                        <img src="image/bds4.jpg" class="bdsimagelarge">
+                                    </div>
+                                    <div class="col-sm-4 nopaddingleft">
+                                        <div class="row">
+                                            <div class="col-sm-12 nopaddingbottom">
+                                                <img src="image/bds5.jpg" class="bdsimgsmall smallfirst">
+                                            </div>  
+                                            <div class="col-sm-6 nopaddingright">
+                                                <img src="image/bds6.jpg" class="bdsimgsmall smallsv">
+                                            </div>
+                                            <div class="col-sm-6 nopaddingleft divslanh">
+                                                <img src="image/bds7.jpg" class="bdsimgsmall smallsv">
+                                                <div class="soluonganh">
+                                                    <i class="fa fa-picture-o"></i> 24
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></a>
+                                <div class="contentbdstk">
+                                    <a href="chitiet.html" class="tieudetk">SUẤT MUA TRỰC TIẾP TỪ CHỦ ĐẦU TƯ CĂN HỘ HOMYLAND RIVERSIDE Q2 GIÁ CHỈ 38 TRIỆU/M2, NHẬN NHÀ Ở NGAY</a>
+                                    <div class="divprice divtienich">
+                                        <span class="pricebds">5,1 tỷ</span>
+                                        <span class="pricebds areabds">30 m<sup>2</sup> </span>
+                                        <span class="tienichtk">38 tr/m<sup>2</sup> </span>
+                                        <span class="tienichtk">2 <i class="fa fa-bed"></i></span>
+                                        <span class="tienichtk">2 <i class="fa fa-bathtub"></i></span>
+                                        <span class="tienichtk">Quận 2, Tp.HCM</span>
+                                        <span class="tienichtk ngaydangtk">2023-01-10</span>
+                                    </div>
+                                    <span class="motatkbds">Chỉ cần thanh toán 30% nhận nhà ở ngay, sau đó trả chậm 24 tháng. Căn hộ Quận 2 Homyland Riverside.Giá bán: 38tr/m². Xem nhà liên hệ em: 0888888888 Giám đốc dự án Homyland Riverside).Nhà</span>
+                                </div>
+                                <hr>
+                                <div class="divtimebds">
+                                    <img src="image/user.jpg" class="usertkiem">
+                                    <span class="tenusertk">Phòng kinh doanh</span>
+                                    <button class="btnphonetk">0999999999</button>
+                                    <button class="btnyeuthich iconyttk"><i class="fa fa-heart active"></i></button>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="xemthembds">
+                            <button onclick="xemThemBds()" class="btnxemthem">Mở rộng <i class="fa fa-chevron-down"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="locnhanhtk">
+                            <p class="tieudeloc">Lọc theo khoảng giá</p>
+                            <div id="listgiafilter">
+                                <a href="">Giá thỏa thuận</a>
+                            </div>
+                        </div>
+                        <div class="locnhanhtk">
+                            <p class="tieudeloc">Lọc theo diện tích</p>
+                            <div id="listdtbenphai">
+                                <a href="">Dưới 30m<sup>2</sup></a>
+                                <a href="">30-50m<sup>2</sup></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="footer" class="text-center text-lg-start bg-body-tertiary text-muted"></footer>
+  <script>
+    $('#lang').selectpicker({
+        noneSelectedText : 'Loại nhà đất'
+    });
+  </script>
+</body>
+</html>
